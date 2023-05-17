@@ -1,0 +1,437 @@
+TABLE OF CONTENTS
+What are CSS Selectors?
+In CSS the most important part is to target the HTML elements properly. We can do this by CSS selectors. Selectors are also very helpful when we want to make a change in our design, we just have to change in one place and it will be applied to the element or the elements selected by the selector.
+
+A selector is pattern of elements and other terms that tell the browser which HTML element should be selected to have the CSS property values that are mentioned in the CSS file. The element or elements which are selected by the selectors are referred as the subject of the selector.
+
+For better understanding I will use the below HTML code and use the selectors to target and design the elements -
+
+
+COPY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Article</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Writing an Article on CSS Selectors</h2>
+    <nav>
+        <ul>
+            <li class="text-orange">Home</li>
+            <li class="text-blue sans-serif" id="bg-white">Services</li>
+            <li class="text-orange" id="bg-black">About Us</li>
+            <li>Contact Us</li>
+        </ul>
+    </nav>
+
+    <a target="_blank" href="https://www.google.com/">Google</a><br>
+    <a target="_top" href="mailto:sayantan23198@gmail.com">📨mail</a><br>
+    <a href="tel:+91700425525">📞call</a>
+
+    <div>
+        <p class="text-orange" id="bg-black"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur labore obcaecati sapiente similique tempore quis quo eligendi asperiores, culpa earum. </p>
+
+        <span class="text-orange"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. </span>
+
+    </div>
+</body>
+</html>
+This is how the page looks like without any CSS applied to it -
+
+Screenshot_20221113_183409.png
+
+There are so many selectors available for different purposes and we also have different ways to use them. So let's talk about the most commonly used selectors -
+
+Type of Selectors
+We have so many type of selectors and the most commonly used are -
+
+Universal Selector
+Type Selector or Individual Selector
+Class and ID Selector
+Attribute Selector
+And or Chained Selector
+Grouping Selectors
+Combinators
+Pseudo Element and Pseudo Class Selector
+Now let's talk about them one by one -
+
+Universal Selector
+This Selector selects everything, every element in the entire document. To use the Universal Selector we have use the asterisk character or *.
+
+
+COPY
+* {
+    background-color: #a3dae5;
+}
+We can use the Universal Selector to reset thee browser's default margin and padding like this -
+
+
+COPY
+* {
+    margin: 0;
+    padding: 0;
+}
+After applying the changes of Universal Selectors this is how the page looks -
+
+Screenshot_20221113_183621.pngWe can clearly see that the margin and padding are gone which are applied by default by the chrome browser.
+
+Type Selector or Individual Selector
+This type of selectors selects the HTML element by their name. For example if we use the below code
+
+
+COPY
+p {
+    color: red;
+}
+It will target all the paragraph element in the document and change the text color inside the paragraph into red.
+
+Screenshot_20221113_184008.png
+
+Class and ID Selector
+Class Selector : This selector selects the all the elements from the document which have that specific class name. For using this we have write this .classname {} syntax.
+
+This selector is very useful as we can select multiple elements which we want to have same styling and we don't have write repetitive code for this. For example -
+
+
+COPY
+<p class="text-orange" id="bg-black"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur labore obcaecati sapiente similique tempore quis quo eligendi asperiores, culpa earum. </p>
+
+<span class="text-orange"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. </span>
+Here we have one paragraph and one span with the same class name. Now if we write the below CSS -
+
+
+COPY
+.text-orange {
+    color: #50DBB4;
+}
+It will change the color of both the paragraph and the span to an orangish color.
+
+ID Selector : This selector selects the element based on the value of it's id attribute. For using this we have to use this #idname {} syntax.
+
+ID should be unique in a document. We can't use one id in multiple elements.
+
+Here is an example of ID Selector -
+
+
+COPY
+#bg-black {
+    background-color: #242B2E;
+}
+It will apply a black background in the paragraph element mentioned above
+
+After applying the the class and id selector the web page looks like this -
+
+Screenshot_20221113_185013.png
+
+Attribute Selector
+There are so many types and so many ways of writing the attribute selectors. Basically this selector selects the HTML element based on the attribute or the value of the attribute. It can have syntax like - [attr], [attr = value], [attr^=value], [attr~=value], [attr|=value], [attr*=value], [attr$=value] and before the square brackets we have to mention the element name whose attributes we are using inside the brackets like - elementName[attr=value].
+
+Now let's talk about some attribute selectors mentioned above -
+
+The [Attribue] Selector : This selector selects all the same elements that have that specific attribute. For example -
+
+
+COPY
+a[target] {
+ font-family: sans-serif;
+}
+This code will apply the sans-serif font to all the anchor elements that have an target attribute.
+
+The [Attribute = "value"] Selector : This selector selects all the same elements that have the specific attribute with the exact same value. For example -
+
+
+COPY
+a[target="_blank"] {
+ font-family: sans-serif;
+}
+This code will apply the sans-serif font to all the anchor elements that have the target attribute with the value _blank or target=_blank.
+
+The [Attribute^="value"] Selector : This selector selects all the elements that have the same attribute and which starts with a specific value. For example -
+
+
+COPY
+a[href="https"] {
+ font-family: sans-serif;
+}
+This code will select all the anchor elements that have an href attribute that start with https.
+
+Now let's look at the images of the web page before applying these attribute selectors -
+
+Screenshot_20221113_185607.pngAnd this is the changed font after applying the attribute selectors -
+
+Screenshot_20221113_185819.png
+
+There are some also other attributes selectors, but we will talk about them some other day.
+
+And or Chained Selector
+This selector selects the elements that matches with all the terms given in the selector. Now it's sounds a bit complex but we can understand it very clearly with examples. If we write p.text-blue.bg-black {}, it will select the paragraph which have both the text-blue and bg-black as class name. Now let's see the below example -
+
+
+COPY
+<ul>
+      <li class="text-orange">Home</li>
+      <li class="text-blue sans-serif" id="bg-white">Services</li>
+      <li class="text-orange" id="bg-black">About Us</li>
+      <li>Contact Us</li>
+</ul>
+
+COPY
+li.text-blue.sans-serif#bg-white {
+    font-family: sans-serif;
+    background-color: #ffffff;
+    color: #1B98F5;
+}
+This above code will apply only in the About Us as it has both the text-blue and sans-serif class and the bg-white id. So, now the services looks like this -
+
+Screenshot_20221113_194225.png
+
+Grouping Selectors
+This selector is used to target more than one element at once. When two or more than two elements have the same styling we can just target them by using name of the element or any class or id name and separating them by a ,.
+
+The syntax looks like this
+
+
+COPY
+element name, #idname, element name { 
+    property : value;
+}
+Now if we write the below CSS
+
+
+COPY
+span, h2, a {
+    background-color: #ffffff;
+}
+the web page will look like this -
+
+Screenshot_20221113_195740.pngThe white background color is applied in all the span,h2 and a elements.
+
+Combinators
+Combinators are basically combination of some Simple Selectors. Combinators allow us to target HTML elements based on the relationship of the elements with the other element and their location in the document. Using these combinators we can combine some simple selectors in a way that it can explain the relationship between them and target the elements based on that. There are mainly four type of combinators -
+
+The Descendant Combinator (space)
+The Direct Child Combinator (>)
+The General Sibling Combinator (~)
+The Adjacent Sibling Combinator (+)
+Descendant Combinator
+This will select all the descendant of the specified element. We just have to mention the parent element and then leave a space(" ") and then we have to mention the child element of the parent. The child element is an inside element of the parent element. For example, in the HTML document we have some li elements inside a nav. So, here li are the child element of nav , which is the parent element.
+
+
+COPY
+    <nav>
+        <ul>
+            <li class="text-orange">Home</li>
+            <li class="text-blue sans-serif" id="bg-white">Services</li>
+            <li class="text-orange" id="bg-black">About Us</li>
+            <li>Contact Us</li>
+        </ul>
+    </nav>
+We can apply CSS on them by writing the below syntax -
+
+
+COPY
+nav li {
+    padding:15px;  
+}
+Now this is the image before applying the above CSS -
+
+Screenshot_20221113_203046.png
+
+and this is the image after applying the CSS -
+
+Screenshot_20221113_203123.png
+
+Direct Child Combinator
+The Direct Child Combinator selects only the direct child or the direct descendant of the specified parent. To use this combinator we just have to us > this character after the parent element and then after > we have to write the child element.
+
+So what is the meaning of direct child and what is the difference between this and the Descendant Combinator? Let's discuss that -
+
+From the Descendant Combinator's we can see that it is selecting the li as it is inside the nav in the HTML document so li is a descendant of nav but not a direct child. Because there is a ul inside the nav and all the li elements are inside the ul. So ul here is the direct child of the nav and li is the direct child of ul but li is not a direct child of nav although it is a descendant of nav.
+
+Now let's apply the below CSS -
+
+
+COPY
+nav>ul>li {
+    border: 2px solid black;
+}
+Now let's see if the border is applied or not -
+
+Screenshot_20221113_204700.png
+
+The General Sibling Combinator
+This combinator selects the siblings. We have to specify the 1st element and then we have to use this ~ this character and after the other sibling element. The second element doesn't need to come right after the first one.
+
+Now, I will a new HTML document to explain only the General Sibling and the Adjacent Sibling Combinator
+
+
+COPY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style02.css">
+</head>
+<body>
+    <div class="container">
+        <h3>This is the first element</h3>
+        <p>This is the immediate sibling of h3</p>
+        <li>This is not immediate sibling of h3 but this is immediate sibling of p</li>
+    </div>
+</body>
+</html>
+Here we can use the General Sibling Combinator by writing the below syntax -
+
+
+COPY
+h3 ~ li {
+    background-color: #1c1d1e;
+    color: #ffffff;
+}
+This will look like this -
+
+Screenshot_20221113_211125.png
+
+The Adjacent Sibling Combinator
+This combinator is more specific than General Sibling Combinator. By using this combinator we can only select the immediate siblings. After the first element we just have to use the + character to and then the second element. So here by using h3 + p we can select only p and by using p + li we can only select li but we can not select li by using h3 + li as li is not a immediate sibling of h3 Example -
+
+
+COPY
+h3 + p {
+    background-color: #E5D68A;
+    color: #a40707;
+}
+Now the paragraph looks like this -
+
+Screenshot_20221113_213143.png
+
+Pseudo Elements
+Pseudo Elements is like adding or targeting a new element without adding more HTML. There are so many pseudo elements for different purposes.
+
+Here we are going to talk about the ::before and the ::after Pseudo Element Selector.
+
+::before Pseudo Element
+The ::before pseudo element creates content before the mentioned element. We have to use element::before syntax to create content before the element. The ::before element will only create a child element before the mentioned element only if the content property is defined. Now let's see an example of this element with code -
+
+
+COPY
+span::before {
+    content: " ";
+    display: block;
+    background-color: #E07C24;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+}
+before adding the above style the page was looking like this -
+
+Screenshot_20221113_221723.pngand after applying the above CSS the page looks like this -
+
+Screenshot_20221113_221826.pngWe can clearly see a rounded orangish colored shape before the span element. That is added by the ::before element.
+
+::after Pseudo Element
+This is Pseudo Element is exactly the same like the ::before element. The only difference is that it creates a child element after the mentioned element when the content property is defined. Now, let's make an exact same shape as the previous one but this time it will be after the span element -
+
+
+COPY
+span::after {
+    content: " ";
+    display: block;
+    background-color: #E07C24;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+}
+Now there is an exact same shape after the span element -
+
+Screenshot_20221113_222441.png
+
+There are so much more to talk just about CSS Selectors but will do that some other day. Let's finish it today and this is all the CSS code that I applied -
+
+
+COPY
+* {
+    background-color: #a3dae5;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    color: #E6425E;
+}
+
+.text-orange {
+    color: #E07C24;
+}
+
+#bg-black {
+    background-color: #242B2E;
+}
+
+a[target] {
+    font-family: sans-serif;
+}
+
+a[target="_blank"] {
+    font-family: sans-serif;
+}
+
+a[href="https"] {
+    font-family: sans-serif;
+}
+
+li.text-blue.sans-serif#bg-white {
+    font-family: sans-serif;
+    background-color: #ffffff;
+    color: #1B98F5;
+}
+
+span, h2, a {
+    background-color: #ffffff;
+}
+
+nav li {
+    padding:15px;  
+}
+
+nav>ul>li {
+    border: 2px solid black;
+}
+
+span::before {
+    content: " ";
+    display: block;
+    background-color: #E07C24;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+}
+
+span::after {
+    content: " ";
+    display: block;
+    background-color: #E07C24;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+}
+And this is the CSS code which I used in General Sibling and the Adjacent Sibling Combinator -
+
+
+COPY
+h3 ~ li {
+    background-color: #1c1d1e;
+    color: #ffffff;
+}
+
+h3 + p {
+    background-color: #E5D68A;
+    color: #a40707;
+}
